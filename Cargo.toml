@@ -19,20 +19,20 @@ default-members = [
 ]
 
 [workspace.package]
-version = "0.1.0"
+version = "0.1.1"
 edition = "2021"
 rust-version = "1.75"
 license = "MIT OR Apache-2.0"
 repository = "https://github.com/theworker02/silicera"
-homepage = "https://silicera.dev"
+homepage = "https://theworker02.github.io/silicera/"
 authors = ["Silicera Contributors"]
 keywords = ["amd", "specialization", "autotuning", "zen", "performance"]
 categories = ["hardware-support", "development-tools", "science"]
 
 [workspace.dependencies]
-silicera = { path = "crates/silicera", version = "0.1.0" }
-silicera-runtime = { path = "crates/silicera-runtime", version = "0.1.0" }
-silicera-lab = { path = "crates/silicera-lab", version = "0.1.0" }
+silicera = { path = "crates/silicera", version = "0.1.1" }
+silicera-runtime = { path = "crates/silicera-runtime", version = "0.1.1" }
+silicera-lab = { path = "crates/silicera-lab", version = "0.1.1" }
 
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"

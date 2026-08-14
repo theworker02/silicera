@@ -34,3 +34,7 @@ tempfile = { workspace = true }
 default = []
 # Experimental C ABI: silicera_init / silicera_profile_load / silicera_variant_select.
 c-abi = []
+
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]

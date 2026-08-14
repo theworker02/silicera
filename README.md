@@ -123,10 +123,10 @@ Exactly **four** primary crates (plus excluded `benchmarks/arm_kernels` and opti
 
 | Crate | Role | crates.io | Local README |
 |-------|------|-----------|--------------|
-| [`silicera`](https://crates.io/crates/silicera) | Discovery, topology, measurement, HNEP, specialization, lifecycle health | [v0.1.0](https://crates.io/crates/silicera) | [crates/silicera/README.md](crates/silicera/README.md) |
-| [`silicera-runtime`](https://crates.io/crates/silicera-runtime) | Profile load + cheap dispatch (no lab dependency) | [v0.1.0](https://crates.io/crates/silicera-runtime) | [crates/silicera-runtime/README.md](crates/silicera-runtime/README.md) |
-| [`silicera-lab`](https://crates.io/crates/silicera-lab) | Microbenchmarks, tournaments, studies, terminal lab, experiments | [v0.1.0](https://crates.io/crates/silicera-lab) | [crates/silicera-lab/README.md](crates/silicera-lab/README.md) |
-| [`silicera-cli`](https://crates.io/crates/silicera-cli) | `silicera` binary — grouped CLI + flat aliases | [v0.1.0](https://crates.io/crates/silicera-cli) | [crates/silicera-cli/README.md](crates/silicera-cli/README.md) |
+| [`silicera`](https://crates.io/crates/silicera) | Discovery, topology, measurement, HNEP, specialization, lifecycle health | [v0.1.1](https://crates.io/crates/silicera) | [crates/silicera/README.md](crates/silicera/README.md) |
+| [`silicera-runtime`](https://crates.io/crates/silicera-runtime) | Profile load + cheap dispatch (no lab dependency) | [v0.1.1](https://crates.io/crates/silicera-runtime) | [crates/silicera-runtime/README.md](crates/silicera-runtime/README.md) |
+| [`silicera-lab`](https://crates.io/crates/silicera-lab) | Microbenchmarks, tournaments, studies, terminal lab, experiments | [v0.1.1](https://crates.io/crates/silicera-lab) | [crates/silicera-lab/README.md](crates/silicera-lab/README.md) |
+| [`silicera-cli`](https://crates.io/crates/silicera-cli) | `silicera` binary — grouped CLI + flat aliases | [v0.1.1](https://crates.io/crates/silicera-cli) | [crates/silicera-cli/README.md](crates/silicera-cli/README.md) |
 
 ### Brand assets
 

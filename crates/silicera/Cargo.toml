@@ -44,3 +44,7 @@ default = []
 tpm = []
 # Optional HW-counter probe surface (still Unavailable without privileges).
 counters = []
+
+[package.metadata.docs.rs]
+all-features = true
+rustdoc-args = ["--cfg", "docsrs"]

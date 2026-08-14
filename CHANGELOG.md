@@ -4,31 +4,20 @@ All notable changes to Silicera are documented here.
 
 Format inspired by [Keep a Changelog](https://keepachangelog.com/).
 
-## [Unreleased] — 2026-08-13
+## [Unreleased]
 
-### Added
-
-- **Published on crates.io (v0.1.0):** [`silicera`](https://crates.io/crates/silicera), [`silicera-runtime`](https://crates.io/crates/silicera-runtime), [`silicera-lab`](https://crates.io/crates/silicera-lab), [`silicera-cli`](https://crates.io/crates/silicera-cli) — install CLI with `cargo install silicera-cli`
-- **Repository logo system:** silicon-die mark with cache rings + measured selection path (`assets/logo.svg`, `logo-mark.svg`, `logo-16.svg`, `logo-banner.svg`, `social-card.svg`); synced to `site/assets/` and all package READMEs
-- **`silicera report`** — Markdown host report (`out/host-report.md` by default) with brand, doctor-style host facts, fingerprint note, optional `--profile` health, funding/disclaimer footer
-- **`silicera toolchain`** — presence probe for rustc / cargo / clang / llvm-profdata / llvm-bolt (JSON flag; never invents PGO/BOLT results)
-- **`silicera health <profile>`** — `ProfileHealth` score 0–100 (integrity + confidence + staleness) via `silicera::lifecycle`
-- **`silicera remarks-summary <yaml>`** — counts remarks by pass name; `RemarksBundle::summary_lines()` / `summarize_yaml`
-- Brand **`RELEASE_LINE`** (“Single-Zen Research Release”) and **`LOGO_RELATIVE`** for docs
-- Per-crate READMEs with logo; expanded root README (concepts, CLI map, lifecycle, brand assets, crates.io links)
+## [0.1.1] — 2026-08-13
 
 ### Changed
 
-- **Lab consolidation:** `alignment` / `placement` / `spot_check` merged into `silicera_lab::studies` (crate-root re-exports unchanged)
-- **CLI consolidation:** `commands.rs` split into `commands/{machine,hnep,measure,research,export,meta,common}.rs`
-- **Phase language merge:** user-facing “Phase I targets…” copy rewritten to Silicera / this release / Zen3–Zen5 wording; `PHASE` remains `"II"` internally
-- **ROADMAP** restructured: current release checklist, next (second Zen host), hardening — not bolt-on “Phase III” marketing
-- Crate `Cargo.toml` `readme` fields point at local crate READMEs
+- **Logo system refresh:** filled die substrate, bond-pad hints, L3→L1 rings, 2×2 core grid with teal selected tile, refined inbound/outbound paths (`assets/` + `site/assets/`)
+- **Homepage** metadata points at GitHub Pages (`https://theworker02.github.io/silicera/`) instead of unresolved `silicera.dev`
+- **Site docs page:** live links to docs.rs crates and GitHub narrative docs (fixes dead “map-only” docs UX)
+- Added `[package.metadata.docs.rs]` so docs.rs builds all features after crates.io publish
 
-### Notes
+### Fixed
 
-- No fabricated speedups; not affiliated with AMD; thanks.dev remains `https://thanks.dev/u/gh/theworker02`
-- Multi-machine Silicon Split YES/NO still deferred until a second Zen host exists
+- docs.rs / shields.io “docs not found” for 0.1.0 — republish triggers documentation builds for 0.1.1
 
 ## [0.1.0] — 2026-08-12
 

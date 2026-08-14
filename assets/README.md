@@ -4,7 +4,7 @@ Canonical Silicera identity marks for READMEs, the research site, and docs.
 
 | File | Role |
 |------|------|
-| [`logo.svg`](logo.svg) | Primary mark — silicon die, cache rings (L3→L1), dual-CCD hint, measured selection path |
+| [`logo.svg`](logo.svg) | Primary mark — filled die, bond pads, cache rings (L3→L1), 2×2 core grid, measured selection path |
 | [`logo-mark.svg`](logo-mark.svg) | Compact mark |
 | [`logo-16.svg`](logo-16.svg) | Favicon / nav (16×16) |
 | [`logo-banner.svg`](logo-banner.svg) | Horizontal wordmark for README / docs |
