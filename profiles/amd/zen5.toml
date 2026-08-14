@@ -1,0 +1,18 @@
+# Zen 5 architecture knowledge pack (public / measured knowledge only).
+# Not AMD confidential. Not an official AMD document.
+
+microarch = "Zen5"
+name = "Zen 5"
+notes = "Public knowledge: family 1Ah, dual-CCD desktop parts (e.g. Ryzen 9000), 48 KiB L1D / 32 KiB L1I, 1 MiB L2, up to 32 MiB L3 per CCD."
+families = [26]  # 0x1A
+model_ranges = [[0, 255]]
+smt_typical = true
+pack_version = 1
+provenance = "Public AMD Zen 5 architecture materials + CPUID cache leaves; not AMD-confidential."
+
+[caches]
+l1d_bytes = 49152
+l1i_bytes = 32768
+l2_bytes = 1048576
+l3_per_ccd_min = 8388608
+l3_per_ccd_max = 33554432

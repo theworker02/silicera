@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Silicera">
+  <title>Silicera</title>
+  <desc>Silicon die with cache rings and a measured specialization path</desc>
+  <!-- Package frame -->
+  <rect x="10" y="10" width="108" height="108" rx="6" fill="none" stroke="#1c2430" stroke-width="3"/>
+  <!-- Dual CCD hint (topology, not a vendor mark) -->
+  <line x1="64" y1="18" x2="64" y2="110" stroke="#1c2430" stroke-width="1.25" opacity="0.22"/>
+  <!-- L3 ring -->
+  <rect x="26" y="26" width="76" height="76" rx="3" fill="none" stroke="#1c2430" stroke-width="2" opacity="0.45"/>
+  <!-- L2 ring -->
+  <rect x="40" y="40" width="48" height="48" rx="2" fill="none" stroke="#1c2430" stroke-width="2" opacity="0.7"/>
+  <!-- L1 / silicon node -->
+  <rect x="52" y="52" width="24" height="24" fill="#1c2430"/>
+  <!-- Inbound generic path -->
+  <path d="M18 64 L52 64" fill="none" stroke="#1c2430" stroke-width="3" stroke-linecap="square"/>
+  <!-- Candidate paths (unselected) -->
+  <path d="M76 52 L110 28" fill="none" stroke="#1c2430" stroke-width="2" opacity="0.28" stroke-linecap="square"/>
+  <path d="M76 76 L110 100" fill="none" stroke="#1c2430" stroke-width="2" opacity="0.28" stroke-linecap="square"/>
+  <!-- Measured selected path -->
+  <path d="M76 64 L110 64" fill="none" stroke="#1f6f78" stroke-width="4" stroke-linecap="square"/>
+  <polygon points="110,64 100,58 100,70" fill="#1f6f78"/>
+</svg>

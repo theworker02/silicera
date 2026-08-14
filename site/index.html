@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Silicera — hardware-native execution research</title>
+  <meta name="description" content="Experimental hardware-native program specialization for AMD Zen. Independent systems research software. Not affiliated with AMD." />
+  <meta name="theme-color" content="#141414" />
+  <meta property="og:image" content="assets/social-card.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/site.css" />
+  <link rel="icon" href="assets/logo-16.svg" type="image/svg+xml" />
+</head>
+<body>
+  <div class="wrap">
+    <nav>
+      <a class="brand" href="index.html">
+        <img src="assets/logo-16.svg" width="22" height="22" alt="" />
+        Silicera
+      </a>
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="technology.html">Technology</a>
+      <a href="research.html">Research</a>
+      <a href="benchmarks.html">Benchmarks</a>
+      <a href="architecture.html">Architecture</a>
+      <a href="docs.html">Docs</a>
+      <a href="amd.html">AMD</a>
+      <a href="roadmap.html">Roadmap</a>
+    </nav>
+
+    <header class="hero">
+      <p class="meta">Independent systems research software · Single-Zen evidence path · AMD Zen3/4/5</p>
+      <p class="hero-mark"><img src="assets/logo.svg" width="88" height="88" alt="Silicera mark" /></p>
+      <h1>Silicera</h1>
+      <p class="tag">What if the physical processor—not merely its architecture—were an input to program specialization?</p>
+      <div class="cta">
+        <a class="btn" href="technology.html">Technology</a>
+        <a class="btn ghost" href="research.html">Research</a>
+        <a class="btn ghost" href="https://thanks.dev/u/gh/theworker02">Sponsor</a>
+        <a class="btn ghost" href="https://github.com/theworker02/silicera">GitHub</a>
+      </div>
+    </header>
+
+    <section class="section">
+      <h2>Thesis</h2>
+      <pre><code>Portable Program
+      +
+AMD Architecture Knowledge
+      +
+Physical Machine Measurements
+      ↓
+Hardware-Native Execution Profile (HNEP)</code></pre>
+      <p>The runtime loads an HNEP, dispatches cheaply, and falls back to baseline on fingerprint mismatch. Correctness gates and statistical skepticism beat mysterious “AI optimization.”</p>
+      <p class="note">Not affiliated with, endorsed by, or certified by Advanced Micro Devices, Inc.</p>
+    </section>
+
+    <section class="section">
+      <h2>What one Zen machine can prove</h2>
+      <p>Primary evidence path today is a <strong>single physical Zen host</strong> (e.g. Ryzen 9 9950X). Multi-machine Silicon Split YES/NO is deferred until a second Zen box is available—without blocking professional single-host research.</p>
+      <pre><code>cargo run -p silicera-cli -- doctor
+cargo run -p silicera-cli -- calm-check
+cargo run -p silicera-cli -- eval -o out/single-machine-eval.json
+cargo run -p silicera-cli -- remarks out/profile.hnep -o out/remarks.yaml
+cargo run -p silicera-cli -- about</code></pre>
+    </section>
+
+    <section class="section">
+      <h2>Artifacts</h2>
+      <table>
+        <thead><tr><th>Artifact</th><th>Role</th></tr></thead>
+        <tbody>
+          <tr><td>Knowledge pack</td><td>Public Zen architecture facts (<code>profiles/amd/</code>)</td></tr>
+          <tr><td>HNEP</td><td>Measured winners + size-class decision tree</td></tr>
+          <tr><td>SCF</td><td>Compiler feedback JSON</td></tr>
+          <tr><td>Remarks</td><td>Experimental LLVM-style YAML</td></tr>
+          <tr><td>Eval pack</td><td>One-shot single-Zen report + repro sidecar</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>Support</h2>
+      <p>Independent research — dual-licensed MIT OR Apache-2.0. If you use Silicera, you can sponsor via <a href="https://thanks.dev/u/gh/theworker02">thanks.dev/u/gh/theworker02</a>.</p>
+    </section>
+
+    <footer>Independent systems research software · Dual-licensed MIT OR Apache-2.0 · Deployed from <code>site/</code> via GitHub Pages · <a href="https://thanks.dev/u/gh/theworker02">Sponsor</a> · Not affiliated with AMD</footer>
+  </div>
+</body>
+</html>

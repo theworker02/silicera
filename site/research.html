@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Research — Silicera</title>
+  <meta name="description" content="Research notes for systems and compiler engineers." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/site.css" />
+  <link rel="icon" href="assets/logo-16.svg" type="image/svg+xml" />
+</head>
+<body>
+  <div class="wrap">
+    <nav>
+      <a class="brand" href="index.html">
+        <img src="assets/logo-16.svg" width="22" height="22" alt="" />
+        Silicera
+      </a>
+      <a href="index.html">Home</a>
+      <a href="technology.html">Technology</a>
+      <a href="research.html" aria-current="page">Research</a>
+      <a href="benchmarks.html">Benchmarks</a>
+      <a href="architecture.html">Architecture</a>
+      <a href="docs.html">Docs</a>
+      <a href="amd.html">AMD</a>
+      <a href="roadmap.html">Roadmap</a>
+    </nav>
+    <header class="hero">
+      <p class="meta">Notes · not a peer-reviewed paper</p>
+      <h1>Research</h1>
+      <p class="tag">Machine-as-input specialization with statistical skepticism. Related work landmarks, not marketing.</p>
+    </header>
+    <section class="section">
+      <h2>Repository notes</h2>
+      <ul>
+        <li><code>docs/research/silicera-paper.md</code> — thesis and scope</li>
+        <li><code>docs/research/silicon-split.md</code> — multi-machine strategy protocol</li>
+        <li><code>docs/research/compiler-feedback-format.md</code> — SCF</li>
+        <li><code>docs/research/llvm-integration.md</code> — remarks bridge</li>
+        <li><code>docs/benchmarks/single-machine.md</code> — one-host evidence path</li>
+        <li><code>docs/research/hne-concept.md</code> — HNE companion concept</li>
+        <li><code>docs/research/amd-integration.md</code> — hypothetical surfaces (no partnership claim)</li>
+        <li><code>docs/research/llvm-integration.md</code> — Phase II compiler feedback</li>
+        <li><code>docs/research/hne-concept.md</code> — Hardware-Native Execution</li>
+        <li><code>docs/research/amd-integration.md</code> — independent research posture</li>
+        <li><code>docs/research/compiler-feedback-format.md</code> — feedback shape</li>
+        <li><code>docs/benchmarks/</code> — portable-vs-native, size-classes</li>
+      </ul>
+      <p class="note">Related work includes PGO, BOLT, ATLAS, FFTW, hardware counters, and <code>-march=native</code>. Silicera’s contribution is the fingerprint-bound profile loop with mismatch → baseline.</p>
+    </section>
+    <section class="section">
+      <h2>Flagship experiments</h2>
+      <p>Silicon Split (Machine A + B placeholder until a second Zen box), Portable vs Native vs Silicera, Cold Machine, Wrong Machine. CLI: <code>silicon-split</code>, <code>harness</code>, <code>compare</code>.</p>
+    </section>
+    <footer>Independent systems research software · Dual MIT OR Apache-2.0 · <a href="https://thanks.dev/u/gh/theworker02">Sponsor</a> · Not affiliated with AMD</footer>
+  </div>
+</body>
+</html>

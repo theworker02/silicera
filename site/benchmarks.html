@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Benchmarks — Silicera</title>
+  <meta name="description" content="Measured Silicera results on AMD Zen. No fabricated speedups." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/site.css" />
+  <link rel="icon" href="assets/logo-16.svg" type="image/svg+xml" />
+</head>
+<body>
+  <div class="wrap">
+    <nav>
+      <a class="brand" href="index.html">
+        <img src="assets/logo-16.svg" width="22" height="22" alt="" />
+        Silicera
+      </a>
+      <a href="index.html">Home</a>
+      <a href="technology.html">Technology</a>
+      <a href="research.html">Research</a>
+      <a href="benchmarks.html" aria-current="page">Benchmarks</a>
+      <a href="architecture.html">Architecture</a>
+      <a href="docs.html">Docs</a>
+      <a href="amd.html">AMD</a>
+      <a href="roadmap.html">Roadmap</a>
+    </nav>
+    <header class="hero">
+      <p class="meta">Measured · Ryzen 9 9950X · Zen5 · 2026-08-12</p>
+      <h1>Benchmarks</h1>
+      <p class="tag">Fingerprint <code>SLC:AMD:ZEN5:1A:44:00:567dcabfdc75b2c3:cbb6a67840c83bca</code>. Re-run locally. Losses are published.</p>
+    </header>
+
+    <section class="section">
+      <h2>Single-Zen evaluation pack</h2>
+      <pre><code>cargo run -p silicera-cli -- eval -o out/single-machine-eval.json
+cargo run -p silicera-cli -- archive --eval out/single-machine-eval.json</code></pre>
+      <table>
+        <thead><tr><th>Field</th><th>Result</th></tr></thead>
+        <tbody>
+          <tr><td>Calm-check</td><td>true (~1.6–1.9% drift)</td></tr>
+          <tr><td>Artifact suite</td><td>native_wins=3 · portable_wins=1</td></tr>
+          <tr><td>Alignment matters</td><td>false</td></tr>
+          <tr><td>Placement (4 threads)</td><td>spread (run-dependent)</td></tr>
+          <tr><td>Deferred</td><td>Silicon Split Machine B; full PGO/BOLT tables</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="section">
+      <h2>Native artifacts (<code>-C target-cpu=native</code> vs x86-64-v2)</h2>
+      <table>
+        <thead><tr><th>Kernel</th><th>Portable ns</th><th>Native ns</th><th>Choice</th></tr></thead>
+        <tbody>
+          <tr><td>dot_f32</td><td>167300</td><td>145100</td><td>→native</td></tr>
+          <tr><td>saxpy_f32</td><td>48800</td><td>28800</td><td>→native</td></tr>
+          <tr><td>checksum_u8</td><td>660850</td><td>692200</td><td>→portable</td></tr>
+          <tr><td>reduce_i32</td><td>8900</td><td>2800</td><td>→native</td></tr>
+        </tbody>
+      </table>
+      <p class="note"><code>checksum_u8</code> portable win is intentional honesty — do not hide it.</p>
+    </section>
+
+    <section class="section">
+      <h2>How to measure</h2>
+      <pre><code>cargo run -p silicera-cli -- calm-check
+cargo run -p silicera-cli -- harness --domain all
+cargo run -p silicera-cli -- native-artifacts --suite --merge-profile out/profile.hnep
+cargo run -p silicera-cli -- remarks out/profile.hnep -o out/remarks.yaml
+cargo run -p silicera-cli -- feedback out/profile.hnep -o out/feedback.scf.json</code></pre>
+    </section>
+
+    <section class="section">
+      <h2>Multi-machine (deferred)</h2>
+      <p>Silicon Split Machine B remains a placeholder until a second Zen host exists. Verdict stays <strong>UNKNOWN</strong>. Protocol and CLI are ready; numbers are not invented.</p>
+    </section>
+
+    <footer>Independent systems research software · Measured rows only · <a href="https://thanks.dev/u/gh/theworker02">Sponsor</a> · Not affiliated with AMD</footer>
+  </div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AMD — Silicera</title>
+  <meta name="description" content="AMD Zen focus for Silicera. Independent systems research software." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/site.css" />
+  <link rel="icon" href="assets/logo-16.svg" type="image/svg+xml" />
+</head>
+<body>
+  <div class="wrap">
+    <nav>
+      <a class="brand" href="index.html">
+        <img src="assets/logo-16.svg" width="22" height="22" alt="" />
+        Silicera
+      </a>
+      <a href="index.html">Home</a>
+      <a href="technology.html">Technology</a>
+      <a href="research.html">Research</a>
+      <a href="benchmarks.html">Benchmarks</a>
+      <a href="architecture.html">Architecture</a>
+      <a href="docs.html">Docs</a>
+      <a href="amd.html" aria-current="page">AMD</a>
+      <a href="roadmap.html">Roadmap</a>
+    </nav>
+    <header class="hero">
+      <p class="meta">Independent research</p>
+      <h1>AMD Zen focus</h1>
+      <p class="tag">Silicera targets Zen3 / Zen4 / Zen5 with public knowledge packs. Not an AMD product. Single-Zen evidence path.</p>
+    </header>
+    <section class="section">
+      <h2>Support model</h2>
+      <p>Exclusivity is enforced by architecture knowledge packs and topology validation — not a vendor-string check alone. Unsupported CPUs get a clear message and exit code 2.</p>
+      <ul>
+        <li><code>docs/amd/overview.md</code></li>
+        <li><code>docs/amd/topology.md</code></li>
+        <li><code>docs/amd/support.md</code></li>
+        <li><code>profiles/amd/*.toml</code> — public / measured facts only</li>
+      </ul>
+    </section>
+    <section class="section">
+      <h2>Adding a pack</h2>
+      <p>To document a new SKU class: add or extend TOML under <code>profiles/amd/</code> with honest <code>families</code>, <code>model_ranges</code>, and cache bounds; validate with <code>silicera probe</code>. Do not claim coverage without validation.</p>
+      <p class="note">AMD, Ryzen, and Zen are trademarks of Advanced Micro Devices, Inc.</p>
+    </section>
+    <footer>Independent systems research software · Dual MIT OR Apache-2.0 · <a href="https://thanks.dev/u/gh/theworker02">Sponsor</a> · Not affiliated with AMD</footer>
+  </div>
+</body>
+</html>

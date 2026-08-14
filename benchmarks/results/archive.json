@@ -1,0 +1,25 @@
+{
+  "format": "silicera-results-archive",
+  "version": 1,
+  "entries": [
+    {
+      "id": "eval-20260813-40c83bca",
+      "captured_at": "2026-08-13T15:29:40.364711500+00:00",
+      "host_brand": "AMD Ryzen 9 9950X 16-Core Processor",
+      "fingerprint": "SLC:AMD:ZEN5:1A:44:00:567dcabfdc75b2c3:cbb6a67840c83bca",
+      "silicera_version": "0.1.0",
+      "experiment": "single-machine-eval",
+      "artifact_path": "out/single-machine-eval.json",
+      "summary": "single-zen eval on AMD Ryzen 9 9950X 16-Core Processor: calm=true harness_portable_wins=2 artifact_native_wins=3 align_matters=false placement=spread best_threads=4",
+      "highlights": [
+        "calm=true",
+        "artifact_native_wins=3",
+        "artifact_portable_wins=1"
+      ]
+    }
+  ],
+  "caveats": [
+    "Only measured campaigns. Do not invent Machine B or speedups.",
+    "Fingerprints identify specialization environments — not authentication."
+  ]
+}

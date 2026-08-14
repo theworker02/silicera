@@ -1,0 +1,36 @@
+[package]
+name = "silicera-runtime"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+authors.workspace = true
+description = "Lightweight HNEP load and cheap dispatch for Silicera-specialized binaries"
+repository.workspace = true
+homepage.workspace = true
+documentation = "https://docs.rs/silicera-runtime"
+keywords.workspace = true
+categories.workspace = true
+readme = "README.md"
+include = [
+    "src/**/*",
+    "README.md",
+    "LICENSE-MIT",
+    "LICENSE-APACHE",
+]
+
+[dependencies]
+silicera = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+tracing = { workspace = true }
+chrono = { workspace = true }
+
+[dev-dependencies]
+tempfile = { workspace = true }
+
+[features]
+default = []
+# Experimental C ABI: silicera_init / silicera_profile_load / silicera_variant_select.
+c-abi = []

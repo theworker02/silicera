@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Architecture — Silicera</title>
+  <meta name="description" content="Four-crate architecture for Silicera." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/site.css" />
+  <link rel="icon" href="assets/logo-16.svg" type="image/svg+xml" />
+</head>
+<body>
+  <div class="wrap">
+    <nav>
+      <a class="brand" href="index.html">
+        <img src="assets/logo-16.svg" width="22" height="22" alt="" />
+        Silicera
+      </a>
+      <a href="index.html">Home</a>
+      <a href="technology.html">Technology</a>
+      <a href="research.html">Research</a>
+      <a href="benchmarks.html">Benchmarks</a>
+      <a href="architecture.html" aria-current="page">Architecture</a>
+      <a href="docs.html">Docs</a>
+      <a href="amd.html">AMD</a>
+      <a href="roadmap.html">Roadmap</a>
+    </nav>
+    <header class="hero">
+      <p class="meta">Four crates · user-mode only</p>
+      <h1>Architecture</h1>
+      <p class="tag">Knowledge packs validate. HNEP records measurements. Runtime mismatch falls back to baseline.</p>
+    </header>
+    <section class="section">
+      <h2>Crate graph</h2>
+      <pre class="diagram"><code>silicera-cli
+    ├── silicera-lab         train / tournaments / UI / experiments
+    ├── silicera-runtime     load HNEP · dispatch · mismatch → baseline
+    └── silicera             discovery · measure · HNEP · topology
+
+profiles/amd/*.toml          *.hnep
+(architecture facts)         (measured profile)</code></pre>
+      <p>Full detail: <code>ARCHITECTURE.md</code> in the repository root.</p>
+    </section>
+    <section class="section">
+      <h2>Fingerprint</h2>
+      <pre><code>SLC:AMD:ZENn:&lt;family&gt;:&lt;model&gt;:&lt;stepping&gt;:&lt;topo_hash&gt;:&lt;cache_hash&gt;</code></pre>
+      <p>Hash material is topology and cache geometry — not serials. Used for profile matching only, not authentication.</p>
+    </section>
+    <footer>Independent systems research software · Dual MIT OR Apache-2.0 · <a href="https://thanks.dev/u/gh/theworker02">Sponsor</a> · Not affiliated with AMD</footer>
+  </div>
+</body>
+</html>

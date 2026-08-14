@@ -1,0 +1,14 @@
+[package]
+name = "silicera-arm-kernels"
+version = "0.1.0"
+edition = "2021"
+license = "MIT OR Apache-2.0"
+publish = false
+description = "Standalone kernels for portable vs -C target-cpu=native artifact comparison"
+
+# Keep out of the Silicera workspace (≤4 primary crates).
+[workspace]
+
+[[bin]]
+name = "silicera-arm-kernels"
+path = "src/main.rs"

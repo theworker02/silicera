@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Technology — Silicera</title>
+  <meta name="description" content="Discovery, measurement, HNEP, and cheap dispatch for AMD Zen." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/site.css" />
+  <link rel="icon" href="assets/logo-16.svg" type="image/svg+xml" />
+</head>
+<body>
+  <div class="wrap">
+    <nav>
+      <a class="brand" href="index.html">
+        <img src="assets/logo-16.svg" width="22" height="22" alt="" />
+        Silicera
+      </a>
+      <a href="index.html">Home</a>
+      <a href="technology.html" aria-current="page">Technology</a>
+      <a href="research.html">Research</a>
+      <a href="benchmarks.html">Benchmarks</a>
+      <a href="architecture.html">Architecture</a>
+      <a href="docs.html">Docs</a>
+      <a href="amd.html">AMD</a>
+      <a href="roadmap.html">Roadmap</a>
+    </nav>
+    <header class="hero">
+      <p class="meta">Pipeline</p>
+      <h1>Technology</h1>
+      <p class="tag">Discovery, measurement, HNEP, SCF, remarks, and cheap dispatch — correctness before performance.</p>
+    </header>
+    <section class="section">
+      <h2>Pipeline</h2>
+      <pre class="diagram"><code>CPUID + knowledge packs
+        │
+        ▼
+   fingerprint class
+        │
+        ▼
+ tournaments (correctness · regression · stability)
+        │
+        ▼
+      .hnep
+        │
+        ▼
+ runtime select  ──mismatch──►  baseline</code></pre>
+      <p>Knowledge packs validate public architecture facts. HNEP files store measured winners for one fingerprint class. They are different artifacts.</p>
+    </section>
+    <section class="section">
+      <h2>Differentiation</h2>
+      <table>
+        <thead><tr><th>Approach</th><th>Silicera angle</th></tr></thead>
+        <tbody>
+          <tr><td>PGO / BOLT</td><td>Variant winners bound to fingerprint class</td></tr>
+          <tr><td><code>-march=native</code></td><td>Portable artifact; bind at profile load</td></tr>
+          <tr><td>Autotuners</td><td>Mismatch fails safe; confidence levels</td></tr>
+          <tr><td>Multiversioning</td><td>Working-set vs cache geometry trees</td></tr>
+        </tbody>
+      </table>
+    </section>
+    <footer>Independent systems research software · Dual MIT OR Apache-2.0 · <a href="https://thanks.dev/u/gh/theworker02">Sponsor</a> · Not affiliated with AMD</footer>
+  </div>
+</body>
+</html>

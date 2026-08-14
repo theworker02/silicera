@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+title: "Silicera"
+message: "If you use this software, please cite it as below."
+type: software
+authors:
+  - name: "Silicera Contributors"
+repository-code: "https://github.com/theworker02/silicera"
+url: "https://silicera.dev"
+abstract: >-
+  Silicera is experimental Rust research software for hardware-native program
+  specialization on AMD Zen processors. The physical machine is treated as an
+  input to specialization via measured Hardware-Native Execution Profiles (HNEP).
+  Not affiliated with Advanced Micro Devices, Inc.
+keywords:
+  - AMD Zen
+  - program specialization
+  - autotuning
+  - HNEP
+  - runtime systems
+license: "MIT OR Apache-2.0"
+version: "0.1.0"
+date-released: "2026-08-12"

@@ -1,0 +1,18 @@
+# Zen 4 architecture knowledge pack (public / measured knowledge only).
+# Not AMD confidential. Not an official AMD document.
+
+microarch = "Zen4"
+name = "Zen 4"
+notes = "Public knowledge: up to 8 cores/CCD, 32 KiB L1D/L1I, 1 MiB L2, up to 32 MiB L3 per CCD."
+families = [25]  # 0x19
+model_ranges = [[16, 31], [96, 127]]
+smt_typical = true
+pack_version = 1
+provenance = "Public AMD Zen 4 architecture materials + CPUID cache leaves; not AMD-confidential."
+
+[caches]
+l1d_bytes = 32768
+l1i_bytes = 32768
+l2_bytes = 1048576
+l3_per_ccd_min = 8388608
+l3_per_ccd_max = 33554432

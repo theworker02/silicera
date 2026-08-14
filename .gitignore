@@ -1,0 +1,9 @@
+/target/
+/out/
+.idea/
+.vscode/
+*.pdb
+fuzz/target/
+fuzz/corpus/
+fuzz/artifacts/
+.DS_Store

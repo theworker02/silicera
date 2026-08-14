@@ -1,0 +1,39 @@
+name: ci
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  test:
+    name: test (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@stable
+      - name: Build workspace
+        run: cargo build --workspace
+      - name: Test workspace (MockHardware)
+        run: cargo test --workspace
+      - name: Unsupported mock exits gracefully
+        shell: bash
+        run: |
+          set +e
+          cargo run -p silicera-cli --quiet -- inspect --mock unsupported
+          code=$?
+          test "$code" -eq 2
+      - name: Supported mock inspect
+        run: cargo run -p silicera-cli --quiet -- inspect --mock zen5
+      - name: Arch-compare mock
+        run: cargo run -p silicera-cli --quiet -- arch-compare --mock
+
+  # Real AMD hosts are not assumed in CI. Hardware tests stay #[ignore].
+  # Documented: docs/amd/support.md

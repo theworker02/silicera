@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Docs — Silicera</title>
+  <meta name="description" content="Silicera documentation index." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/site.css" />
+  <link rel="icon" href="assets/logo-16.svg" type="image/svg+xml" />
+</head>
+<body>
+  <div class="wrap">
+    <nav>
+      <a class="brand" href="index.html">
+        <img src="assets/logo-16.svg" width="22" height="22" alt="" />
+        Silicera
+      </a>
+      <a href="index.html">Home</a>
+      <a href="technology.html">Technology</a>
+      <a href="research.html">Research</a>
+      <a href="benchmarks.html">Benchmarks</a>
+      <a href="architecture.html">Architecture</a>
+      <a href="docs.html" aria-current="page">Docs</a>
+      <a href="amd.html">AMD</a>
+      <a href="roadmap.html">Roadmap</a>
+    </nav>
+    <header class="hero">
+      <p class="meta">Documentation</p>
+      <h1>Docs</h1>
+      <p class="tag">Canonical tree lives in the repository under <code>docs/</code>. This page is a map.</p>
+    </header>
+    <section class="section">
+      <h2>Maps</h2>
+      <ul>
+        <li><code>docs/INDEX.md</code> — full catalog</li>
+        <li><code>ARCHITECTURE.md</code> — crate map + HNEP vs knowledge packs</li>
+        <li><code>docs/research/hnep-spec.md</code> — normative HNEP contract</li>
+        <li><code>docs/research/compiler-feedback-format.md</code> — SCF</li>
+        <li><code>docs/benchmarks/single-machine.md</code> — one-host evidence path</li>
+        <li><code>CITATION.cff</code> — citation metadata</li>
+      </ul>
+    </section>
+    <section class="section">
+      <h2>CLI surface</h2>
+      <pre><code>silicera doctor | inspect | probe | train | verify | explain
+silicera harness | native-artifacts | align | placement | threads
+silicera calm-check | eval | feedback | remarks | remarks-summary | archive
+silicera report | toolchain | health | about | completions powershell</code></pre>
+    </section>
+    <footer>Independent systems research software · Dual MIT OR Apache-2.0 · <a href="https://thanks.dev/u/gh/theworker02">Sponsor</a> · Not affiliated with AMD</footer>
+  </div>
+</body>
+</html>

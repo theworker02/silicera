@@ -1,0 +1,38 @@
+[package]
+name = "silicera-lab"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+authors.workspace = true
+description = "Measurement lab: microbenchmarks, tournaments, and profile generation for Silicera"
+repository.workspace = true
+homepage.workspace = true
+documentation = "https://docs.rs/silicera-lab"
+keywords.workspace = true
+categories.workspace = true
+readme = "README.md"
+include = [
+    "src/**/*",
+    "examples/**/*",
+    "README.md",
+    "LICENSE-MIT",
+    "LICENSE-APACHE",
+]
+
+[dependencies]
+silicera = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+thiserror = { workspace = true }
+anyhow = { workspace = true }
+chrono = { workspace = true }
+crossterm = { workspace = true }
+ratatui = { workspace = true }
+tracing = { workspace = true }
+indexmap = { workspace = true }
+
+[dev-dependencies]
+silicera-runtime = { workspace = true }
+tempfile = { workspace = true }
+proptest = { workspace = true }

@@ -1,0 +1,19 @@
+[package]
+name = "silicera-fuzz"
+version = "0.0.0"
+edition = "2021"
+publish = false
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+libfuzzer-sys = "0.4"
+silicera = { path = "../crates/silicera" }
+
+[[bin]]
+name = "hnep_parse"
+path = "fuzz_targets/hnep_parse.rs"
+doc = false
+test = false
+bench = false
