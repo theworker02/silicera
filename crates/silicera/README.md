@@ -5,7 +5,7 @@
 # silicera
 
 [![crates.io](https://img.shields.io/crates/v/silicera.svg)](https://crates.io/crates/silicera)
-[![docs.rs](https://img.shields.io/docsrs/silicera)](https://docs.rs/silicera)
+[![docs](https://img.shields.io/badge/docs-online-1f6f78.svg)](https://theworker02.github.io/silicera/api/silicera/)
 
 Core library for **hardware-native program specialization** on AMD Zen3 / Zen4 / Zen5.
 

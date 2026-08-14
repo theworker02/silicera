@@ -5,7 +5,7 @@
 # silicera-runtime
 
 [![crates.io](https://img.shields.io/crates/v/silicera-runtime.svg)](https://crates.io/crates/silicera-runtime)
-[![docs.rs](https://img.shields.io/docsrs/silicera-runtime)](https://docs.rs/silicera-runtime)
+[![docs](https://img.shields.io/badge/docs-online-1f6f78.svg)](https://theworker02.github.io/silicera/api/silicera_runtime/)
 
 Lightweight **HNEP load and cheap dispatch** for Silicera-specialized binaries.
 

@@ -17,7 +17,7 @@ Format inspired by [Keep a Changelog](https://keepachangelog.com/).
 
 ### Fixed
 
-- docs.rs / shields.io “docs not found” for 0.1.0 — republish triggers documentation builds for 0.1.1
+- docs.rs / shields.io “docs not found” for 0.1.0 — republish 0.1.1 + host rustdoc on GitHub Pages (`/api/`) so docs are online while docs.rs queues
 
 ## [0.1.0] — 2026-08-12
 

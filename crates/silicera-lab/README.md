@@ -5,7 +5,7 @@
 # silicera-lab
 
 [![crates.io](https://img.shields.io/crates/v/silicera-lab.svg)](https://crates.io/crates/silicera-lab)
-[![docs.rs](https://img.shields.io/docsrs/silicera-lab)](https://docs.rs/silicera-lab)
+[![docs](https://img.shields.io/badge/docs-online-1f6f78.svg)](https://theworker02.github.io/silicera/api/silicera_lab/)
 
 Measurement laboratory: microbenchmarks, harness arms, alignment/placement **studies**, native-artifact compare, Silicon Split protocol helpers, and a terminal UI for **live measured** sessions only.
 

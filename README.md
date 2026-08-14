@@ -9,7 +9,7 @@
 <p align="center">
   <a href="https://crates.io/crates/silicera"><img src="https://img.shields.io/crates/v/silicera.svg" alt="crates.io silicera" /></a>
   <a href="https://crates.io/crates/silicera-cli"><img src="https://img.shields.io/crates/v/silicera-cli.svg" alt="crates.io silicera-cli" /></a>
-  <a href="https://docs.rs/silicera"><img src="https://img.shields.io/docsrs/silicera" alt="docs.rs silicera" /></a>
+  <a href="https://theworker02.github.io/silicera/api/silicera/"><img src="https://img.shields.io/badge/docs-online-1f6f78.svg" alt="API docs" /></a>
   <a href="LICENSE-MIT"><img src="https://img.shields.io/badge/license-MIT%20OR%20Apache--2.0-blue.svg" alt="license" /></a>
 </p>
 
@@ -40,12 +40,12 @@ silicera-runtime = "0.1"   # optional: dispatch only
 silicera-lab = "0.1"       # optional: measurement / tournaments
 ```
 
-| Crate | crates.io | docs.rs |
-|-------|-----------|---------|
-| **silicera** | [crates.io/crates/silicera](https://crates.io/crates/silicera) | [docs.rs/silicera](https://docs.rs/silicera) |
-| **silicera-runtime** | [crates.io/crates/silicera-runtime](https://crates.io/crates/silicera-runtime) | [docs.rs/silicera-runtime](https://docs.rs/silicera-runtime) |
-| **silicera-lab** | [crates.io/crates/silicera-lab](https://crates.io/crates/silicera-lab) | [docs.rs/silicera-lab](https://docs.rs/silicera-lab) |
-| **silicera-cli** | [crates.io/crates/silicera-cli](https://crates.io/crates/silicera-cli) | [docs.rs/silicera-cli](https://docs.rs/silicera-cli) |
+| Crate | crates.io | docs |
+|-------|-----------|------|
+| **silicera** | [crates.io/crates/silicera](https://crates.io/crates/silicera) | [API (GitHub Pages)](https://theworker02.github.io/silicera/api/silicera/) · [docs.rs](https://docs.rs/silicera) |
+| **silicera-runtime** | [crates.io/crates/silicera-runtime](https://crates.io/crates/silicera-runtime) | [API](https://theworker02.github.io/silicera/api/silicera_runtime/) · [docs.rs](https://docs.rs/silicera-runtime) |
+| **silicera-lab** | [crates.io/crates/silicera-lab](https://crates.io/crates/silicera-lab) | [API](https://theworker02.github.io/silicera/api/silicera_lab/) · [docs.rs](https://docs.rs/silicera-lab) |
+| **silicera-cli** | [crates.io/crates/silicera-cli](https://crates.io/crates/silicera-cli) | [docs.rs](https://docs.rs/silicera-cli) |
 
 Or build from this repository:
 

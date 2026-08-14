@@ -5,7 +5,7 @@
 # silicera-cli
 
 [![crates.io](https://img.shields.io/crates/v/silicera-cli.svg)](https://crates.io/crates/silicera-cli)
-[![docs.rs](https://img.shields.io/docsrs/silicera-cli)](https://docs.rs/silicera-cli)
+[![docs](https://img.shields.io/badge/docs-online-1f6f78.svg)](https://theworker02.github.io/silicera/docs.html)
 
 The `silicera` binary — operator surface for discovery, training, verification, measurement, research packs, and exports.
 

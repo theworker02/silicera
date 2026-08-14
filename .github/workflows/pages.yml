@@ -5,6 +5,9 @@ on:
     branches: [main, master]
     paths:
       - "site/**"
+      - "crates/**"
+      - "Cargo.toml"
+      - "Cargo.lock"
       - ".github/workflows/pages.yml"
   workflow_dispatch:
 
@@ -22,6 +25,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Install Rust
+        uses: dtolnay/rust-toolchain@stable
+      - name: Build API docs
+        run: |
+          cargo doc -p silicera -p silicera-runtime -p silicera-lab --no-deps --all-features
+          mkdir -p site/api
+          cp -a target/doc/. site/api/
+          printf '%s\n' '<!DOCTYPE html><meta charset="utf-8"><title>Silicera API docs</title><meta http-equiv="refresh" content="0; url=silicera/"><p><a href="silicera/">silicera</a> · <a href="silicera_runtime/">silicera-runtime</a> · <a href="silicera_lab/">silicera-lab</a></p>' > site/api/index.html
       - name: Upload site artifact
         uses: actions/upload-pages-artifact@v3
         with:
