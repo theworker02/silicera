@@ -55,3 +55,10 @@ Professional entry point for AMD engineers, LLVM developers, and systems researc
 ## Site
 
 Static research site under [`../site/`](../site/) — review before deploying.
+
+## Profile revisions and hardware prototypes
+
+- [Profile revision workflow](concepts/profile-revisions.md)
+- [Hardware prototype program](hardware/README.md)
+- [Prototype acceptance tests](hardware/acceptance-test-plan.md)
+- [Proposed instrumentation contract](hardware/instrumentation-contract.md)

@@ -20,6 +20,33 @@ use silicera_runtime::{Dispatcher, MismatchPolicy};
 use super::common::dump_node;
 use crate::style::{header, kv, tag};
 
+pub fn cmd_diff(before: &str, after: &str, json: bool, fail_on_change: bool) -> Result<()> {
+    let a = HnepProfile::read_from(Path::new(before)).context("cannot read before profile")?;
+    let b = HnepProfile::read_from(Path::new(after)).context("cannot read after profile")?;
+    let diff = silicera::profile_diff::ProfileDiff::between(&a, &b)?;
+    if json {
+        println!("{}", serde_json::to_string_pretty(&diff)?);
+    } else {
+        println!("{}", header("silicera hnep diff"));
+        println!("{}", kv("same_fingerprint", &diff.same_fingerprint.to_string()));
+        println!("{}", kv("changed_fields", &diff.changes.len().to_string()));
+        for change in &diff.changes {
+            let display = |value: &Option<serde_json::Value>| {
+                value.as_ref().map(ToString::to_string).unwrap_or_else(|| "<absent>".into())
+            };
+            println!(
+                "  {}: {} -> {}",
+                change.path, display(&change.before), display(&change.after)
+            );
+        }
+        println!("  Timing differences are observations, not proof of a speedup.");
+    }
+    if fail_on_change && !diff.changes.is_empty() {
+        bail!("profile fields changed");
+    }
+    Ok(())
+}
+
 pub fn cmd_train(output: &str, iterations: usize, label: &str, only: Option<&str>) -> Result<()> {
     let info = detect_hardware()?;
     if !info.support.is_supported() {

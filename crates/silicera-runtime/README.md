@@ -11,10 +11,16 @@ Lightweight **HNEP load and cheap dispatch** for Silicera-specialized binaries.
 
 ```toml
 [dependencies]
-silicera-runtime = "0.1"
+silicera-runtime = "0.2"
 ```
 
 No lab / measurement dependency. On fingerprint mismatch the dispatcher falls back to baseline (or fails closed under strict-machine policy).
+
+New in 0.2: `dispatcher.loaded().guarded_workload(name, available, minimum_confidence)`
+and `guarded_size(bytes, available)` return allocation-free variant/reason records.
+Provide only implemented, host-ISA-compatible variant IDs and always implement baseline.
+Workload selection supports a confidence floor; size selection checks availability only.
+Direct profile construction now verifies integrity and schema before dispatch.
 
 ```bash
 cargo test -p silicera-runtime

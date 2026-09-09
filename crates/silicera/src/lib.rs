@@ -47,6 +47,7 @@ pub mod knowledge;
 pub mod lifecycle;
 pub mod macros;
 pub mod measure;
+pub mod profile_diff;
 pub mod remarks;
 pub mod repro;
 pub mod retrain;

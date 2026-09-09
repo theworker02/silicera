@@ -124,9 +124,17 @@ impl LoadedProfile {
         host: HardwareInfo,
         policy: MismatchPolicy,
     ) -> Result<Self> {
+        // Callers can construct profiles directly; do not trust their digest.
+        let profile = HnepProfile::parse_str(&serde_json::to_string(&profile)?)?;
         let host_fp = match &host.fingerprint {
             Some(fp) => fp.clone(),
             None => {
+                if policy == MismatchPolicy::StrictMachine {
+                    return Err(SiliceraError::ProfileMismatch(format!(
+                        "strict-machine ({NAME}): host unsupported ({})",
+                        host.support.message()
+                    )));
+                }
                 return Ok(Self {
                     status: format!(
                         "PROFILE MISMATCH ({NAME}): host unsupported ({})",
@@ -147,10 +155,7 @@ impl LoadedProfile {
         let class_match = host_fp.same_silicon_class(&profile_fp);
 
         let (force_baseline, status) = if exact_match {
-            (
-                false,
-                format!("profile match: exact fingerprint ({NAME})"),
-            )
+            (false, format!("profile match: exact fingerprint ({NAME})"))
         } else if class_match {
             match policy {
                 MismatchPolicy::FallbackBaseline => (
@@ -221,6 +226,96 @@ impl LoadedProfile {
     /// Access decision tree when present.
     pub fn decision_tree(&self) -> Option<&DecisionTree> {
         self.profile.decision_tree.as_ref()
+    }
+
+    /// Select a workload only when its winner is supported by the application
+    /// and meets its confidence floor. Always provide a real baseline handler.
+    /// The available IDs must already be filtered for the host's ISA support.
+    pub fn guarded_workload<'a>(
+        &'a self,
+        workload: &str,
+        available: &[&str],
+        minimum: silicera::hnep::Confidence,
+    ) -> DispatchDecision<'a> {
+        if self.force_baseline {
+            return DispatchDecision::baseline(DispatchReason::MachineMismatch);
+        }
+        let Some(entry) = self.profile.workloads.iter().find(|w| w.name == workload) else {
+            return DispatchDecision::baseline(DispatchReason::MissingWorkload);
+        };
+        if entry.winner == "baseline" {
+            return DispatchDecision::baseline(DispatchReason::ProfileBaseline);
+        }
+        if entry.confidence.rank() < minimum.rank() {
+            return DispatchDecision::baseline(DispatchReason::InsufficientConfidence);
+        }
+        if !available.contains(&entry.winner.as_str()) {
+            return DispatchDecision::baseline(DispatchReason::UnavailableVariant);
+        }
+        DispatchDecision {
+            variant: &entry.winner,
+            reason: DispatchReason::Selected,
+        }
+    }
+
+    /// Guard size dispatch against variant IDs absent from the host-compatible
+    /// application registry. This does not infer confidence from tree leaves.
+    pub fn guarded_size<'a>(&'a self, bytes: u64, available: &[&str]) -> DispatchDecision<'a> {
+        if self.force_baseline {
+            return DispatchDecision::baseline(DispatchReason::MachineMismatch);
+        }
+        let Some(tree) = &self.profile.decision_tree else {
+            return DispatchDecision::baseline(DispatchReason::MissingTree);
+        };
+        let variant = tree.evaluate(bytes);
+        if variant == "baseline" {
+            return DispatchDecision::baseline(DispatchReason::ProfileBaseline);
+        }
+        if !available.contains(&variant) {
+            return DispatchDecision::baseline(DispatchReason::UnavailableVariant);
+        }
+        DispatchDecision {
+            variant,
+            reason: DispatchReason::Selected,
+        }
+    }
+}
+
+/// Stable, machine-readable explanation of a guarded dispatch decision.
+#[derive(Debug, Clone, Copy, PartialEq, Eq, Serialize)]
+#[serde(rename_all = "snake_case")]
+pub enum DispatchReason {
+    /// A supported specialized implementation was selected.
+    Selected,
+    /// The profile explicitly selected baseline.
+    ProfileBaseline,
+    /// The machine does not match the profile.
+    MachineMismatch,
+    /// The workload is absent from the profile.
+    MissingWorkload,
+    /// No size decision tree was recorded.
+    MissingTree,
+    /// The workload confidence is below the requested floor.
+    InsufficientConfidence,
+    /// The application cannot execute this variant on this host.
+    UnavailableVariant,
+}
+
+/// Allocation-free selection result for applications with a variant registry.
+#[derive(Debug, Clone, Copy, Serialize)]
+pub struct DispatchDecision<'a> {
+    /// Variant to execute; `baseline` must always be implemented by the caller.
+    pub variant: &'a str,
+    /// Why this variant was selected.
+    pub reason: DispatchReason,
+}
+
+impl DispatchDecision<'_> {
+    fn baseline(reason: DispatchReason) -> Self {
+        Self {
+            variant: "baseline",
+            reason,
+        }
     }
 }
 
@@ -327,10 +422,7 @@ mod tests {
         };
         let bytes = serde_json::to_vec(&p).unwrap();
         let digest = IntegrityDigest::sha256(&bytes);
-        HnepProfile {
-            digest,
-            ..profile
-        }
+        HnepProfile { digest, ..profile }
     }
 
     #[test]
@@ -373,9 +465,7 @@ mod tests {
         assert_eq!(loaded.select_workload("demo"), "baseline");
         assert!(loaded.status.contains("PROFILE MISMATCH"));
         assert!(loaded.status.contains(NAME));
-        let _ = SupportStatus::Unsupported {
-            reason: "x".into(),
-        };
+        let _ = SupportStatus::Unsupported { reason: "x".into() };
         let _ = Microarch::Zen5;
     }
 
@@ -392,5 +482,97 @@ mod tests {
         assert_eq!(about.repository, REPOSITORY);
         assert_eq!(about.funding_url, FUNDING_URL);
         assert_eq!(about.affiliation, AFFILIATION_DISCLAIMER);
+    }
+
+    #[test]
+    fn unsupported_host_obeys_strict_policy() {
+        for policy in [
+            MismatchPolicy::FallbackBaseline,
+            MismatchPolicy::StrictMachine,
+        ] {
+            let host = MockHardware::unsupported_intel()
+                .discover(&KnowledgePack::builtin())
+                .unwrap();
+            let profile = make_profile("SLC:AMD:ZEN4:19:61:00:deadbeefdeadbeef:cafebabecafebabe");
+            let result = LoadedProfile::from_parts(profile, host, policy);
+            if policy == MismatchPolicy::StrictMachine {
+                assert!(matches!(result, Err(SiliceraError::ProfileMismatch(_))));
+            } else {
+                let loaded = result.unwrap();
+                assert_eq!(
+                    loaded
+                        .guarded_workload("demo", &["fast"], Confidence::Medium)
+                        .reason,
+                    DispatchReason::MachineMismatch
+                );
+                assert_eq!(loaded.select_size(100), "baseline");
+            }
+        }
+    }
+
+    #[test]
+    fn direct_load_rejects_tampering_and_unknown_schema() {
+        let host = MockHardware::zen5_dual_ccd()
+            .discover(&KnowledgePack::builtin())
+            .unwrap();
+        let mut profile = make_profile(&host.fingerprint.as_ref().unwrap().value);
+        profile.workloads[0].winner = "tampered".into();
+        assert!(LoadedProfile::from_parts(
+            profile.clone(),
+            host.clone(),
+            MismatchPolicy::FallbackBaseline
+        )
+        .is_err());
+        profile.header.version = 999;
+        profile.recompute_digest().unwrap();
+        assert!(
+            LoadedProfile::from_parts(profile, host, MismatchPolicy::FallbackBaseline).is_err()
+        );
+    }
+
+    #[test]
+    fn guarded_dispatch_checks_registry_confidence_and_boundaries() {
+        let host = MockHardware::zen5_dual_ccd()
+            .discover(&KnowledgePack::builtin())
+            .unwrap();
+        let mut profile = make_profile(&host.fingerprint.as_ref().unwrap().value);
+        profile.decision_tree = Some(DecisionTree::from_thresholds(
+            10, 20, 30, "fast", "missing", "baseline", "fast", "baseline",
+        ));
+        profile.recompute_digest().unwrap();
+        let loaded =
+            LoadedProfile::from_parts(profile, host, MismatchPolicy::StrictMachine).unwrap();
+        assert_eq!(
+            loaded
+                .guarded_workload("demo", &["fast"], Confidence::Medium)
+                .variant,
+            "fast"
+        );
+        assert_eq!(
+            loaded
+                .guarded_workload("demo", &["fast"], Confidence::High)
+                .reason,
+            DispatchReason::InsufficientConfidence
+        );
+        assert_eq!(
+            loaded.guarded_workload("demo", &[], Confidence::Low).reason,
+            DispatchReason::UnavailableVariant
+        );
+        assert_eq!(
+            loaded
+                .guarded_workload("unknown", &["fast"], Confidence::Low)
+                .reason,
+            DispatchReason::MissingWorkload
+        );
+        assert_eq!(loaded.guarded_size(9, &["fast"]).variant, "fast");
+        assert_eq!(
+            loaded.guarded_size(10, &["fast"]).reason,
+            DispatchReason::UnavailableVariant
+        );
+        assert_eq!(
+            loaded.guarded_size(20, &["fast"]).reason,
+            DispatchReason::ProfileBaseline
+        );
+        assert_eq!(loaded.guarded_size(u64::MAX, &["fast"]).variant, "fast");
     }
 }

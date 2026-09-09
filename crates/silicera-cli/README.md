@@ -4,6 +4,10 @@
 
 # silicera-cli
 
+New in 0.2: `silicera hnep diff before.hnep after.hnep --json --fail-on-change`
+reviews verified profile revisions without requiring an AMD host. Timestamp-only
+changes are ignored; meaningful field changes can fail a CI gate.
+
 [![crates.io](https://img.shields.io/crates/v/silicera-cli.svg)](https://crates.io/crates/silicera-cli)
 [![docs](https://img.shields.io/badge/docs-online-1f6f78.svg)](https://theworker02.github.io/silicera/docs.html)
 
