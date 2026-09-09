@@ -17,7 +17,7 @@ mod style;
 use catalog::{print_commands, print_guide, print_recipe};
 use commands::{
     cmd_about, cmd_align, cmd_arch_compare, cmd_archive, cmd_benchmark, cmd_calm_check, cmd_compare,
-    cmd_counters, cmd_digest, cmd_dispatch, cmd_doctor, cmd_env, cmd_eval, cmd_experiment,
+    cmd_counters, cmd_diff, cmd_digest, cmd_dispatch, cmd_doctor, cmd_env, cmd_eval, cmd_experiment,
     cmd_explain, cmd_feedback, cmd_fingerprint, cmd_fleet_export, cmd_harness, cmd_health, cmd_init,
     cmd_inspect, cmd_lab, cmd_native_artifacts, cmd_packs, cmd_placement, cmd_probe, cmd_profile,
     cmd_remarks, cmd_remarks_summary, cmd_report, cmd_repro_export, cmd_retrain, cmd_runtime,
@@ -266,6 +266,16 @@ enum MachineCmd {
 
 #[derive(Subcommand, Debug)]
 enum HnepCmd {
+    /// Compare profile revisions without running measurements or detecting hardware.
+    Diff {
+        before: String,
+        after: String,
+        #[arg(long)]
+        json: bool,
+        /// Return a nonzero exit status when meaningful fields differ.
+        #[arg(long)]
+        fail_on_change: bool,
+    },
     Train {
         #[arg(short, long, default_value = "out/profile.hnep")]
         output: String,
@@ -680,6 +690,9 @@ fn dispatch_hnep(c: HnepCmd) -> anyhow::Result<()> {
             only,
         } => cmd_train(&output, iterations, &label, only.as_deref()),
         HnepCmd::Show { path, json } => cmd_profile(&path, json),
+        HnepCmd::Diff { before, after, json, fail_on_change } => {
+            cmd_diff(&before, &after, json, fail_on_change)
+        }
         HnepCmd::Verify {
             profile,
             strict_machine,

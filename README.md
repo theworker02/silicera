@@ -35,9 +35,9 @@ silicera about
 
 ```toml
 [dependencies]
-silicera = "0.1"
-silicera-runtime = "0.1"   # optional: dispatch only
-silicera-lab = "0.1"       # optional: measurement / tournaments
+silicera = "0.2"
+silicera-runtime = "0.2"   # optional: dispatch only
+silicera-lab = "0.2"       # optional: measurement / tournaments
 ```
 
 | Crate | crates.io | docs |
@@ -100,6 +100,20 @@ machine fingerprint + knowledge packs
 
 See [docs/research/silicera-paper.md](docs/research/silicera-paper.md) and [docs/INDEX.md](docs/INDEX.md).
 
+## Profile revision and prototype update (0.2.0)
+
+- Review retraining with `silicera hnep diff before.hnep after.hnep --json`.
+  Add `--fail-on-change` for a CI gate. Entries match by name; timestamps and
+  digests are excluded. Timing changes are observations, not speedup claims.
+- Embedders can use `LoadedProfile::guarded_workload` and `guarded_size` to
+  reject unavailable variants and receive structured fallback reasons.
+- Direct runtime loads now verify profiles; strict-machine rejects unsupported hosts.
+- [Hardware prototype brief](docs/hardware/README.md): staged AMD appliance design,
+  manufacturer deliverables, instrumentation proposal and acceptance gates.
+  These are engineering plans; no hardware has been manufactured or qualified.
+
+See [profile revision workflows](docs/concepts/profile-revisions.md).
+
 ## Status
 
 **This release (Single-Zen Research Release)** ships:
@@ -123,10 +137,10 @@ Exactly **four** primary crates (plus excluded `benchmarks/arm_kernels` and opti
 
 | Crate | Role | crates.io | Local README |
 |-------|------|-----------|--------------|
-| [`silicera`](https://crates.io/crates/silicera) | Discovery, topology, measurement, HNEP, specialization, lifecycle health | [v0.1.1](https://crates.io/crates/silicera) | [crates/silicera/README.md](crates/silicera/README.md) |
-| [`silicera-runtime`](https://crates.io/crates/silicera-runtime) | Profile load + cheap dispatch (no lab dependency) | [v0.1.1](https://crates.io/crates/silicera-runtime) | [crates/silicera-runtime/README.md](crates/silicera-runtime/README.md) |
-| [`silicera-lab`](https://crates.io/crates/silicera-lab) | Microbenchmarks, tournaments, studies, terminal lab, experiments | [v0.1.1](https://crates.io/crates/silicera-lab) | [crates/silicera-lab/README.md](crates/silicera-lab/README.md) |
-| [`silicera-cli`](https://crates.io/crates/silicera-cli) | `silicera` binary — grouped CLI + flat aliases | [v0.1.1](https://crates.io/crates/silicera-cli) | [crates/silicera-cli/README.md](crates/silicera-cli/README.md) |
+| [`silicera`](https://crates.io/crates/silicera) | Discovery, topology, measurement, HNEP, specialization, lifecycle health | [v0.2.0](https://crates.io/crates/silicera) | [crates/silicera/README.md](crates/silicera/README.md) |
+| [`silicera-runtime`](https://crates.io/crates/silicera-runtime) | Profile load + cheap dispatch (no lab dependency) | [v0.2.0](https://crates.io/crates/silicera-runtime) | [crates/silicera-runtime/README.md](crates/silicera-runtime/README.md) |
+| [`silicera-lab`](https://crates.io/crates/silicera-lab) | Microbenchmarks, tournaments, studies, terminal lab, experiments | [v0.2.0](https://crates.io/crates/silicera-lab) | [crates/silicera-lab/README.md](crates/silicera-lab/README.md) |
+| [`silicera-cli`](https://crates.io/crates/silicera-cli) | `silicera` binary — grouped CLI + flat aliases | [v0.2.0](https://crates.io/crates/silicera-cli) | [crates/silicera-cli/README.md](crates/silicera-cli/README.md) |
 
 ### Brand assets
 

@@ -6,6 +6,32 @@ Format inspired by [Keep a Changelog](https://keepachangelog.com/).
 
 ## [Unreleased]
 
+## [0.2.0] — 2026-09-09
+
+### Added
+
+- Deterministic HNEP revision diff API and `hnep diff` command with JSON output
+  and `--fail-on-change`; identity-based matching includes timing, confidence,
+  environment and decision-tree changes without performance conclusions.
+- Allocation-free guarded workload/size dispatch with application variant registries,
+  workload confidence floors and serializable selection/fallback reasons.
+- Hardware prototype engineering package: three staged designs, manufacturer
+  quotation/deliverable brief, acceptance tests and proposed USB instrumentation contract.
+  Hardware and instrumentation remain design proposals, not implemented devices.
+
+### Fixed
+
+- Direct `LoadedProfile::from_parts` calls now verify integrity and schema, including
+  legacy profile migration, before allowing dispatch.
+- Strict-machine mode now rejects hosts without a supported fingerprint.
+
+### Compatibility
+
+- HNEP wire schema remains v2 with legacy v1 migration. Existing unguarded selection
+  APIs retain behavior; guarded selection is opt-in. Callers must provide a baseline
+  implementation and filter registry IDs for actual host ISA support.
+- Four published workspace crates move together to 0.2.0; no dependencies added.
+
 ## [0.1.1] — 2026-08-13
 
 ### Changed

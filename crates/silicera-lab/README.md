@@ -11,7 +11,7 @@ Measurement laboratory: microbenchmarks, harness arms, alignment/placement **stu
 
 ```toml
 [dependencies]
-silicera-lab = "0.1"
+silicera-lab = "0.2"
 ```
 
 ```bash

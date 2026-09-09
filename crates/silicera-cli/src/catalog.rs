@@ -15,6 +15,11 @@ pub struct CatalogEntry {
 pub fn catalog() -> &'static [CatalogEntry] {
     &[
         CatalogEntry {
+            group: "hnep",
+            name: "hnep diff",
+            summary: "Compare verified profile revisions; JSON and CI change gate",
+        },
+        CatalogEntry {
             group: "meta",
             name: "meta about | about",
             summary: "Brand, license, phase, homepage, funding",

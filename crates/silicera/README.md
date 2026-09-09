@@ -11,7 +11,7 @@ Core library for **hardware-native program specialization** on AMD Zen3 / Zen4 /
 
 ```toml
 [dependencies]
-silicera = "0.1"
+silicera = "0.2"
 ```
 
 Discovery, topology, measurement, HNEP profiles, specialization trees, compiler feedback (SCF), remarks, profile lifecycle health, and knowledge packs live here.

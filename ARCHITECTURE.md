@@ -50,3 +50,15 @@ Support requires AuthenticAMD + Zen3/4/5 knowledge-pack validation + topology su
 Kernel drivers, firmware/BIOS modification, overclocking, LLM-in-the-loop optimization, fabricated speedups, automatic cloud upload, multi-machine claims without a second measured host.
 
 See `docs/INDEX.md` for the full documentation map.
+
+## Revision review and guarded dispatch (0.2)
+
+`silicera::profile_diff` verifies both profiles and compares identity-indexed fields.
+It excludes creation time and digest; the CLI can emit JSON or fail on changes.
+`silicera-runtime` verifies directly supplied profiles at load time. Optional
+guarded selectors return allocation-free variant/reason records and check the
+application-provided host-compatible registry; workload selection also checks a
+confidence floor. Existing selectors remain available.
+
+The [hardware prototype plan](docs/hardware/README.md) keeps instrumentation outside
+the dispatch path. No controller transport or firmware is implemented in this release.

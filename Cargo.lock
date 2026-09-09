@@ -1026,7 +1026,7 @@ dependencies = [
 
 [[package]]
 name = "silicera"
-version = "0.1.1"
+version = "0.2.0"
 dependencies = [
  "chrono",
  "hex",
@@ -1046,7 +1046,7 @@ dependencies = [
 
 [[package]]
 name = "silicera-cli"
-version = "0.1.1"
+version = "0.2.0"
 dependencies = [
  "anyhow",
  "chrono",
@@ -1065,7 +1065,7 @@ dependencies = [
 
 [[package]]
 name = "silicera-lab"
-version = "0.1.1"
+version = "0.2.0"
 dependencies = [
  "anyhow",
  "chrono",
@@ -1084,7 +1084,7 @@ dependencies = [
 
 [[package]]
 name = "silicera-runtime"
-version = "0.1.1"
+version = "0.2.0"
 dependencies = [
  "chrono",
  "serde",

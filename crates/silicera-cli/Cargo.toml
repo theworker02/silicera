@@ -14,6 +14,7 @@ categories.workspace = true
 readme = "README.md"
 include = [
     "src/**/*",
+    "tests/**/*",
     "README.md",
     "LICENSE-MIT",
     "LICENSE-APACHE",

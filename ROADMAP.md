@@ -39,3 +39,12 @@ Shipped for Zen3 / Zen4 / Zen5 on the developer SKU:
 
 - Fabricated percentages; AMD partnership claims; kernel/firmware mods; LLM optimization loops; automatic cloud upload
 - Claiming multi-machine divergence without a second measured host
+
+## 0.2 prototype preparation
+
+- [x] Profile revision diff and guarded runtime selection
+- [x] Hardware engineering brief and acceptance plan
+- [ ] Manufacturer quote, board selection and approved budget
+- [ ] P0 application demonstration on qualified existing Zen host
+- [ ] Optional P1 instrumentation firmware, importer and enclosure
+- [ ] P2 custom electronics only after P1 evidence and design review
