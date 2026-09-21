@@ -1,5 +1,5 @@
-<p align="center">
-  <img src="assets/logo-banner.svg" alt="Silicera — hardware-native specialization" width="520" />
+﻿<p align="center">
+  <img src="assets/logo-banner.svg" alt="Silicera â€” hardware-native specialization" width="520" />
 </p>
 
 <p align="center">
@@ -10,13 +10,13 @@
   <a href="https://crates.io/crates/silicera"><img src="https://img.shields.io/crates/v/silicera.svg" alt="crates.io silicera" /></a>
   <a href="https://crates.io/crates/silicera-cli"><img src="https://img.shields.io/crates/v/silicera-cli.svg" alt="crates.io silicera-cli" /></a>
   <a href="https://theworker02.github.io/silicera/api/silicera/"><img src="https://img.shields.io/badge/docs-online-1f6f78.svg" alt="API docs" /></a>
-  <a href="LICENSE-MIT"><img src="https://img.shields.io/badge/license-MIT%20OR%20Apache--2.0-blue.svg" alt="license" /></a>
+  <a href="license-Proprietary%20(source--available)"><img src="https://img.shields.io/badge/license-Proprietary%20(source--available)%20OR%20Apache--2.0-blue.svg" alt="license" /></a>
 </p>
 
 <p align="center">
-  Single-Zen Research Release · Zen3 / Zen4 / Zen5 · Dual MIT OR Apache-2.0<br/>
-  <a href="https://github.com/theworker02/silicera">GitHub</a> ·
-  <a href="https://thanks.dev/u/gh/theworker02">Sponsor</a> ·
+  Single-Zen Research Release Â· Zen3 / Zen4 / Zen5 Â· Dual MIT OR source-available proprietary<br/>
+  <a href="https://github.com/theworker02/silicera">GitHub</a> Â·
+  <a href="https://thanks.dev/u/gh/theworker02">Sponsor</a> Â·
   <a href="site/index.html">Research site</a>
 </p>
 
@@ -42,9 +42,9 @@ silicera-lab = "0.2"       # optional: measurement / tournaments
 
 | Crate | crates.io | docs |
 |-------|-----------|------|
-| **silicera** | [crates.io/crates/silicera](https://crates.io/crates/silicera) | [API (GitHub Pages)](https://theworker02.github.io/silicera/api/silicera/) · [docs.rs](https://docs.rs/silicera) |
-| **silicera-runtime** | [crates.io/crates/silicera-runtime](https://crates.io/crates/silicera-runtime) | [API](https://theworker02.github.io/silicera/api/silicera_runtime/) · [docs.rs](https://docs.rs/silicera-runtime) |
-| **silicera-lab** | [crates.io/crates/silicera-lab](https://crates.io/crates/silicera-lab) | [API](https://theworker02.github.io/silicera/api/silicera_lab/) · [docs.rs](https://docs.rs/silicera-lab) |
+| **silicera** | [crates.io/crates/silicera](https://crates.io/crates/silicera) | [API (GitHub Pages)](https://theworker02.github.io/silicera/api/silicera/) Â· [docs.rs](https://docs.rs/silicera) |
+| **silicera-runtime** | [crates.io/crates/silicera-runtime](https://crates.io/crates/silicera-runtime) | [API](https://theworker02.github.io/silicera/api/silicera_runtime/) Â· [docs.rs](https://docs.rs/silicera-runtime) |
+| **silicera-lab** | [crates.io/crates/silicera-lab](https://crates.io/crates/silicera-lab) | [API](https://theworker02.github.io/silicera/api/silicera_lab/) Â· [docs.rs](https://docs.rs/silicera-lab) |
 | **silicera-cli** | [crates.io/crates/silicera-cli](https://crates.io/crates/silicera-cli) | [docs.rs](https://docs.rs/silicera-cli) |
 
 Or build from this repository:
@@ -56,7 +56,7 @@ cargo test --workspace
 
 ## What Silicera is
 
-Silicera treats the **physical machine** — topology, cache geometry, and measured behavior — as an input to program specialization.
+Silicera treats the **physical machine** â€” topology, cache geometry, and measured behavior â€” as an input to program specialization.
 
 1. A **portable artifact** carries multiple implementation variants (baseline + candidates).
 2. On a supported host, Silicera **discovers** CPUID / topology and validates it against AMD Zen **knowledge packs**.
@@ -66,21 +66,21 @@ Silicera treats the **physical machine** — topology, cache geometry, and measu
 
 ```
 generic code
-     │
-     ▼
+     â”‚
+     â–¼
 machine fingerprint + knowledge packs
-     │
-     ├──────────────┬──────────────┐
-     ▼              ▼              ▼
+     â”‚
+     â”œâ”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+     â–¼              â–¼              â–¼
  variant A      variant B      baseline
-     │              │              │
-     └──────────────┼──────────────┘
-                    ▼
-          measure · gate · select
-                    │
-                    ▼
-                 .hnep  ──►  runtime dispatch
-                              (mismatch → baseline)
+     â”‚              â”‚              â”‚
+     â””â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¼â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”˜
+                    â–¼
+          measure Â· gate Â· select
+                    â”‚
+                    â–¼
+                 .hnep  â”€â”€â–º  runtime dispatch
+                              (mismatch â†’ baseline)
 ```
 
 > **Not affiliated with, endorsed by, or certified by** Advanced Micro Devices, Inc. AMD, Ryzen, and Zen are trademarks of Advanced Micro Devices, Inc.
@@ -89,14 +89,14 @@ machine fingerprint + knowledge packs
 
 `-march=native`, PGO, multiversioning, BOLT, and classical autotuners each capture part of the hardware story. Silicera asks a narrower question:
 
-> If **machine identity and measured cache/topology behavior** are first-class inputs, can portable binaries still dispatch **machine-appropriate** variants — with correctness gates, statistical skepticism, and safe fallbacks?
+> If **machine identity and measured cache/topology behavior** are first-class inputs, can portable binaries still dispatch **machine-appropriate** variants â€” with correctness gates, statistical skepticism, and safe fallbacks?
 
 | Approach | Optimizes for | Silicera difference |
 |----------|---------------|---------------------|
 | `-march=native` | ISA / microarch at compile time | Specialization from **runtime-measured** machine + profile |
 | LLVM PGO / BOLT | Profiled control flow / layout | HNEP binds winners to a **fingerprint class** |
-| CPU multiversioning | Feature leaves (AVX…) | Decision trees over **working-set vs cache geometry** |
-| ATLAS / FFTW | Search at install/build | Portable artifact + **mismatch → baseline** |
+| CPU multiversioning | Feature leaves (AVXâ€¦) | Decision trees over **working-set vs cache geometry** |
+| ATLAS / FFTW | Search at install/build | Portable artifact + **mismatch â†’ baseline** |
 
 See [docs/research/silicera-paper.md](docs/research/silicera-paper.md) and [docs/INDEX.md](docs/INDEX.md).
 
@@ -123,11 +123,11 @@ See [profile revision workflows](docs/concepts/profile-revisions.md).
 | Discovery | Zen3 / Zen4 / Zen5 CPUID, topology graph, knowledge-pack validation, machine fingerprint |
 | Measurement | Warmup/iterations, median/stability, tournaments with correctness + regression gates |
 | Profiles | HNEP schema v2, size-class trees, integrity digests, SCF feedback, LLVM-style remarks |
-| Runtime | Cheap dispatch, mismatch → baseline, optional C ABI, profile health / staleness / retrain |
+| Runtime | Cheap dispatch, mismatch â†’ baseline, optional C ABI, profile health / staleness / retrain |
 | Lab / CLI | Harness, native-artifacts, calm-check, eval pack, align/placement/threads studies, report, toolchain probe |
 | Research protocol | Silicon Split *protocol* + Machine B placeholder (verdict **UNKNOWN** without a second Zen host) |
 
-**Deferred:** Silicon Split YES/NO and cross-SKU divergence tables need a second measured Zen machine. Single-machine work is not blocked — use `silicera eval`.
+**Deferred:** Silicon Split YES/NO and cross-SKU divergence tables need a second measured Zen machine. Single-machine work is not blocked â€” use `silicera eval`.
 
 **Non-goals:** kernel drivers, BIOS/firmware modification, overclocking, LLM-in-the-loop optimization, fabricated speedups, automatic cloud upload of profiles.
 
@@ -140,7 +140,7 @@ Exactly **four** primary crates (plus excluded `benchmarks/arm_kernels` and opti
 | [`silicera`](https://crates.io/crates/silicera) | Discovery, topology, measurement, HNEP, specialization, lifecycle health | [v0.2.0](https://crates.io/crates/silicera) | [crates/silicera/README.md](crates/silicera/README.md) |
 | [`silicera-runtime`](https://crates.io/crates/silicera-runtime) | Profile load + cheap dispatch (no lab dependency) | [v0.2.0](https://crates.io/crates/silicera-runtime) | [crates/silicera-runtime/README.md](crates/silicera-runtime/README.md) |
 | [`silicera-lab`](https://crates.io/crates/silicera-lab) | Microbenchmarks, tournaments, studies, terminal lab, experiments | [v0.2.0](https://crates.io/crates/silicera-lab) | [crates/silicera-lab/README.md](crates/silicera-lab/README.md) |
-| [`silicera-cli`](https://crates.io/crates/silicera-cli) | `silicera` binary — grouped CLI + flat aliases | [v0.2.0](https://crates.io/crates/silicera-cli) | [crates/silicera-cli/README.md](crates/silicera-cli/README.md) |
+| [`silicera-cli`](https://crates.io/crates/silicera-cli) | `silicera` binary â€” grouped CLI + flat aliases | [v0.2.0](https://crates.io/crates/silicera-cli) | [crates/silicera-cli/README.md](crates/silicera-cli/README.md) |
 
 ### Brand assets
 
@@ -182,7 +182,7 @@ cargo run -p silicera-cli -- inspect
 cargo run -p silicera-cli -- toolchain
 cargo run -p silicera-cli -- report -o out/host-report.md
 
-# Train → verify → health
+# Train â†’ verify â†’ health
 cargo run -p silicera-cli -- train -o out/profile.hnep
 cargo run -p silicera-cli -- verify out/profile.hnep --spot-check
 cargo run -p silicera-cli -- health out/profile.hnep
@@ -247,7 +247,7 @@ silicera doctor
   tpm                Stubbed
 ```
 
-**Silicon Split:** Machine A can be trained; Machine B remains a placeholder until a second Zen host exists → verdict **UNKNOWN**.
+**Silicon Split:** Machine A can be trained; Machine B remains a placeholder until a second Zen host exists â†’ verdict **UNKNOWN**.
 
 **Do not paste fabricated speedups.** Measured campaign notes live in [docs/research/silicera-paper.md](docs/research/silicera-paper.md) and [CHANGELOG.md](CHANGELOG.md).
 
@@ -275,7 +275,7 @@ After training:
 
 ```bash
 silicera verify out/profile.hnep --spot-check
-silicera health out/profile.hnep          # 0–100 integrity + confidence + staleness
+silicera health out/profile.hnep          # 0â€“100 integrity + confidence + staleness
 silicera hnep staleness out/profile.hnep
 silicera hnep retrain out/profile.hnep    # partial --only plan when drift is soft
 ```
@@ -285,7 +285,7 @@ silicera hnep retrain out/profile.hnep    # partial --only plan when drift is so
 | Doc | Audience |
 |-----|----------|
 | [ARCHITECTURE.md](ARCHITECTURE.md) | System design |
-| [ROADMAP.md](ROADMAP.md) | Current release · next (second Zen host) · hardening |
+| [ROADMAP.md](ROADMAP.md) | Current release Â· next (second Zen host) Â· hardening |
 | [docs/INDEX.md](docs/INDEX.md) | Full doc hub |
 | [docs/getting-started/index.md](docs/getting-started/index.md) | First measurements |
 | [docs/benchmarks/single-machine.md](docs/benchmarks/single-machine.md) | Primary evidence path |
@@ -295,7 +295,7 @@ silicera hnep retrain out/profile.hnep    # partial --only plan when drift is so
 
 ## Sponsor
 
-Independent systems research software — dual-licensed MIT OR Apache-2.0.
+Independent systems research software â€” dual-licensed MIT OR source-available proprietary.
 
 - thanks.dev: [https://thanks.dev/u/gh/theworker02](https://thanks.dev/u/gh/theworker02)
 - GitHub: [https://github.com/theworker02/silicera](https://github.com/theworker02/silicera)
@@ -308,7 +308,8 @@ cargo run -p silicera-cli -- about
 
 ## License
 
-Dual-licensed under **MIT OR Apache-2.0**. See [LICENSE-MIT](LICENSE-MIT) and [LICENSE-APACHE](LICENSE-APACHE).
+**Source-available proprietary** — evaluation under [LICENSE](./LICENSE); commercial / production use via [COMMERCIAL.md](./COMMERCIAL.md). See [LICENSE_TRANSITION_NOTICE.md](./LICENSE_TRANSITION_NOTICE.md) and [NOTICE](./NOTICE).
+
 
 ## Security
 
