@@ -1,4 +1,4 @@
-﻿[workspace]
+[workspace]
 resolver = "2"
 members = [
     "crates/silicera",
@@ -23,6 +23,7 @@ version = "0.2.0"
 edition = "2021"
 rust-version = "1.75"
 license = "LicenseRef-Proprietary"
+license-file = "LICENSE"
 repository = "https://github.com/theworker02/silicera"
 homepage = "https://theworker02.github.io/silicera/"
 authors = ["Silicera Contributors"]
