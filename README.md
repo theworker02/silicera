@@ -1,4 +1,4 @@
-﻿<p align="center">
+<p align="center">
   <img src="assets/logo-banner.svg" alt="Silicera â€” hardware-native specialization" width="520" />
 </p>
 
@@ -314,3 +314,10 @@ cargo run -p silicera-cli -- about
 ## Security
 
 See [SECURITY.md](SECURITY.md). User-mode only. Fingerprints are not authentication. Report issues responsibly.
+
+
+---
+
+## License & acquisition
+
+This project is **proprietary**. Production use, redistribution, and commercial deployment require a written commercial license or completed acquisition. See [LICENSE](./LICENSE) and [ACQUISITION.md](./ACQUISITION.md). Contact [@theworker02](https://github.com/theworker02).
